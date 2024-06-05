@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stunting Classification</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+margin: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+ background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Stunting Classification</h1>
+  <label for="age">Age (Month):</label>
+  <input type="number" id="age" name="age" required>
+  <label for="gender">Pilih Jenis Kelamin:</label>
+        <select id="gender" name="gender">
+            <option value="">--Pilih Jenis Kelamin--</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>aa
+        </select>
+        <br><br>
+  <label for="height">Height (cm):</label>
+  <input type="number" id="height" name="height" required>
+  <button onclick="classify()">Classify</button>
+  <div id="result"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script>
+  async function classify() {
+  const age = document.getElementById('age').value;
+  const height = document.getElementById('height').value;
+  const gender = document.getElementById('gender').value;
+
+  // Load the model
+  const model = await tf.loadLayersModel('C:\Users\Hp\Documents\ASEP\Website stunting\knn_model.h5');
+
+  // Make a prediction
+  const prediction = await model.predict(tf.tensor2d([[age, height, gender]]));
+
+  // Display the result
+  document.getElementById('result').innerHTML = `Classification: ${prediction.dataSync()[0]}`;
+
+  // Save the model
+  await tf.io.writeModel(model, 'C:\Users\Hp\Documents\ASEP\Website stunting\knn_model.h5');
+}
+</script>
+</body>
+</html>
