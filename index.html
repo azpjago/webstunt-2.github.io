@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Stunting Classification</title>
+<title>Klasifikasi Stunting Balita</title>
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -54,8 +54,10 @@ button {
 </head>
 <body>
 <div class="container">
-  <h1>Stunting Classification</h1>
-  <label for="age">Age (Month):</label>
+  <h1>Klasifikasi Stunting Balita</h1>
+  <br>
+  <h2>Desa Ganjar Sabar</h2>
+  <label for="age">Usia (Dalam Bulan):</label>
   <input type="number" id="age" name="age" required>
   <label for="gender">Pilih Jenis Kelamin:</label>
   <select id="gender" name="gender">
@@ -64,7 +66,7 @@ button {
     <option value="1">Perempuan</option>
   </select>
   <br><br>
-  <label for="height">Height (cm):</label>
+  <label for="height">Tinggi Badan (Dalam satuan CM):</label>
   <input type="number" id="height" name="height" required>
   <button onclick="classify()">Classify</button>
   <div id="result"></div>
@@ -146,5 +148,6 @@ button {
     document.getElementById('result').innerHTML = `Hasil Prediksi: ${prediction}<br>Waktu Proses: ${processingTime.toFixed(2)} Second`;
   }
 </script>
+<footer>made with ❤️ by Asep Saepul Anwar</footer>
 </body>
 </html>
