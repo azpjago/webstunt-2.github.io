@@ -55,7 +55,6 @@ button {
 <body>
 <div class="container">
   <h1>Klasifikasi Stunting Balita</h1>
-  <br>
   <h2>Desa Ganjar Sabar</h2>
   <label for="age">Usia (Dalam Bulan):</label>
   <input type="number" id="age" name="age" required>
@@ -80,7 +79,7 @@ button {
 
     // Check if all inputs are filled
     if (isNaN(age) || isNaN(height) || isNaN(gender)) {
-      document.getElementById('result').innerHTML = "Please fill in all fields.";
+      document.getElementById('result').innerHTML = "Harap isi semua kolom.";
       return;
     }
 
